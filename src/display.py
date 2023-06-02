@@ -3,12 +3,12 @@ from graph import *
 import sys
 # Print a world
 
-def print_world(graph, robot, list_balls, passed_balls,previous,frompoint,n=4):
+def print_world(graph, robot, list_balls, passed_balls, previous, frompoint, n=30):
     # Create n*n field
     plt.xlim(0, n)
     plt.ylim(0, n)
     print(len(list_balls))
-    list_balls=list_balls+[robot.position]
+    list_balls = list_balls + [robot.position]
 
     if(frompoint >= len(list_balls)-1):
         plt.plot(robot.position[0], robot.position[1], marker="o", label='robot')
@@ -49,7 +49,7 @@ def print_world(graph, robot, list_balls, passed_balls,previous,frompoint,n=4):
 
 
 
-def print_path(path,n=4):
+def print_path(path, n=30):
     # Create n*n field
     plt.xlim(0, n)
     plt.ylim(0, n)

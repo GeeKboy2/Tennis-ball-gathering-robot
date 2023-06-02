@@ -21,11 +21,8 @@ def init_graph(list_nodes, robot):
         for i in range(len(graph[0])):
             for j in range(len(graph[0])):
                 if i == layer or j == layer:
-                    if (i == (size - 1) or j == (size - 1)):
-                        graph[layer][i][j] = 0
-                    else:
-                        graph[layer][i][j] = 0
-
+                    graph[layer][i][j] = 0
+                    
     # Filling the graph with angles
     for layer in range(len(graph)):
         for i in range(len(graph[0])):
@@ -50,6 +47,9 @@ def weight(previous_node, current_node, future_node, list_nodes, robot):
 
     ba = b - a
     bc = c - b
+
+    # if abs(np.linalg.norm(ba) * np.linalg.norm(bc)) < 1e-5:
+    #     return 0
 
     cosine_angle = np.dot(ba, bc) / (np.linalg.norm(ba) * np.linalg.norm(bc))
     if cosine_angle > 1:
@@ -91,7 +91,7 @@ def path_opt(graph, list_balls, robot):
             # print(sum_weight)
             if i == 0:
                 sum_weight = weight(len(list_balls) - 1, len(list_balls) - 2, p[i + 2], list_balls, robot)
-            # # weight of the edge for coming from p[i], is in p[i + 1] and going to p[i + 2]
+            # weight of the edge for coming from p[i], is in p[i + 1] and going to p[i + 2]
             else:
                 sum_weight += graph[p[i]][p[i + 1]][p[i + 2]]
             # + 2 because the first 2 idx are for init_pos
@@ -107,7 +107,6 @@ def path_opt(graph, list_balls, robot):
 
         exceed_weight = False
 
-    print(weight_min)
     return path_min
 
 
@@ -159,7 +158,7 @@ def shortest_path(graph, list_balls, robot):
     already_chosen_balls.append(already_chosen_balls[0])
     path_min = [list_nodes[i]
                 for i in already_chosen_balls]  # Construct the minimum path
-    print(sum)  # Print the total weight of the path
+
     return path_min
 
 
