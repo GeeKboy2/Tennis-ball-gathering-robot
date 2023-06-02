@@ -28,7 +28,11 @@ To successfully complete this project, it will be necessary to develop efficient
 
 python3 project.py "csv file name" "world size" "movement speed" "rotation speed"
 
+The ``make fig`` command lets you run the two algorithms in different situations and display the paths found.
 
+The ``make time`` command calculates the execution time of the algorithms in worlds with a variable number of bullets (may take some time).
+
+The ``report.pdf`` report is available in the ``report`` folder. It can be recompiled by moving to the ``report`` folder and running the ``make`` command.
 
 <a name="fr"></a>
 # Description [Français]
