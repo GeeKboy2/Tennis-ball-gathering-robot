@@ -1,0 +1,6 @@
+admin.sh
+__pycache__/
+*.log
+*.out
+*.aux
+*.toc
